@@ -1,16 +1,10 @@
 from flask import Flask
-import time
+import led_main as led
 import threading
 
 app=Flask(__name__)
 
-def temp():
-    while True:
-        print("haha")
-        print("haha")
-        time.sleep(2)
-
-threading.Thread(target=temp).start()
+threading.Thread(target=led.loop).start()
 
 @app.route("/")
 def hello():
