@@ -19,9 +19,9 @@ def loop():
             print("looploop")
             print(tick)
             print()
-            
+
         else:
-            time.sleep(1)
+            time.sleep(1/1000)
 
 
 fps = 60
