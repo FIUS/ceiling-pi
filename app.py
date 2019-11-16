@@ -5,3 +5,5 @@ app=Flask(__name__)
 def hello():
     print("test")
     return "Hi"
+
+app.run(host="0.0.0.0")
