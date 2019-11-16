@@ -14,14 +14,13 @@ def loop():
     global minDeltaTime
     while True:
         delta = getMilis()-tick
-        tick = getMilis()
         if delta > minDeltaTime:
+            tick = getMilis()
             print("looploop")
-            print(tick)
+            print(delta)
             print()
-
         else:
-            time.sleep(1/1000)
+            time.sleep(0.01)
 
 
 fps = 60
