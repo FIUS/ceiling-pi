@@ -18,4 +18,4 @@ while True:
         GPIO.output(5, GPIO.HIGH)
     elif cpuTemp < 40:
         GPIO.output(5, GPIO.LOW)
-    time.sleep(5)
+    time.sleep(5*60)
