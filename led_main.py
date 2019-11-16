@@ -1,11 +1,30 @@
 import time
-temp = int(round(time.time() * 1000))
+
+fps = None
+tick = None
+minDeltaTime = None
+
+
+def getMilis():
+    return int(round(time.time() * 1000))
+
 
 def loop():
-    global temp
+    global tick
+    global minDeltaTime
     while True:
-        print(int(round(time.time() * 1000))-temp)
-        temp =int(round(time.time() * 1000))
-        print("haha")
-        print("haha")
-        print("looploop")
+        delta = getMilis()-tick
+        tick = getMilis()
+        if delta > minDeltaTime:
+            print("looploop")
+            print(tick)
+            print()
+            
+        else:
+            time.sleep(1)
+
+
+fps = 60
+minDeltaTime = 1000/fps
+
+tick = getMilis()
