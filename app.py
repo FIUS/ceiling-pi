@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import led_main as led
 import threading
 
@@ -6,10 +6,39 @@ app=Flask(__name__)
 
 threading.Thread(target=led.loop).start()
 
-@app.route("/")
-def hello():
+@app.route("/color", methods=['POST'])
+def color():
+    ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
+    content=request.json
+    led.color=content
+    print("Color set: "+str(content))
+    return "Ok"
+
+@app.route("/animationType")
+def animationType():
     print("test")
     return "Hi"
+
+@app.route("/get")
+def get():
+    print("test")
+    return "Hi"
+
+@app.route("/doorOpen")
+def doorOpen():
+    print("test")
+    return "Hi"
+
+@app.route("/doorClosed")
+def doorClosed():
+    print("test")
+    return "Hi"
+
+@app.route("/printer")
+def printer():
+    print("test")
+    return "Hi"
+
 
 app.run(host="0.0.0.0")
 
