@@ -27,6 +27,7 @@ def update(strip, data):
     
     if onStateChanged:
         print("1")
+        print("\t"+str(fading))
         if fading > 0:
             print("2")
             for i in range (0,int((data['num_pixel'] / fadingSize) - fadingSize)):
