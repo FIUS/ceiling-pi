@@ -11,7 +11,7 @@ def init(strip, data):
 def update(strip, data):
     global pixelsLeft
     
-    for i in range(speed):
+    for i in range(0,speed):
         if len(pixelsLeft)>0:
             offLED=random.randrange(len(pixelsLeft))
             strip.setPixelColor(pixelsLeft[offLED],cm.rgb(0,0,0))

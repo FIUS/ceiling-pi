@@ -2,6 +2,7 @@ import time
 from neo import *
 import plainColor
 import off
+import on
 
 led_state={
     'type':0,
@@ -36,6 +37,8 @@ def loop():
 led_functions=[
     off.init,
     off.update,
+    on.init,
+    on.update,
     plainColor.init,
     plainColor.update
 ]

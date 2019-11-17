@@ -10,22 +10,20 @@ threading.Thread(target=led.loop).start()
 @app.route("/color", methods=['POST'])
 def color():
     ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
-    print (request.is_json)
     
     content=request.json
     led.led_state['color']=content
     led.led_state['type']=2
-    print("Color set: "+str(content))
+
     return "Ok"
 
 @app.route("/animationType", methods=['POST'])
 def animationType():
     '''Input as json in form of {"type":5} '''
     content=request.json
-    print(content)
     led.led_state['type']=content['type']
     
-    return "OK"
+    return "State ist now "+str(content['type'])
 
 @app.route("/get")
 def get():
