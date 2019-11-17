@@ -23,7 +23,7 @@ def animationType():
     '''Input as json in form of {type:5} '''
     content=request.json
     print(content.type)
-    led-led_state['type']=content.type
+    led.led_state['type']=content.type
     
     return "OK"
 
