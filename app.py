@@ -11,6 +11,7 @@ threading.Thread(target=led.loop).start()
 def color():
     ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
     print (request.is_json)
+    print(request.json)
     content=request.json
     led.led_state['color']=json.loads(content)
     print("Color set: "+str(content))
