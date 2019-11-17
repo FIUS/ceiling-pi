@@ -14,6 +14,7 @@ def color():
     
     content=request.json
     led.led_state['color']=content
+    led.led_state['type']=0
     print("Color set: "+str(content))
     return "Ok"
 
