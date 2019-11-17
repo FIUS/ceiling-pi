@@ -12,7 +12,5 @@ def update(strip, data):
     
     if len(pixelsLeft)>0:
         offLED=random.randrange(len(pixelsLeft))
-        print(offLED)
-        print(pixelsLeft[offLED])
         strip.setPixelColor(pixelsLeft[offLED],cm.rgb(0,0,0))
         pixelsLeft.pop(offLED)
