@@ -40,7 +40,7 @@ def doorClosed():
     print("test")
     return "Hi"
 
-@app.route("/printer")
+@app.route("/printer", methods=['POST'])
 def printer():
     ''' Input as json in form of {"color":0.1} - Number in 0<=n<=1'''
     content=request.json
