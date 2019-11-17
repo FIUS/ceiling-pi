@@ -16,6 +16,7 @@ def color():
 
 @app.route("/animationType")
 def animationType():
+    '''Input as json in form of {type:5} '''
     print("test")
     return "Hi"
 
