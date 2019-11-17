@@ -11,6 +11,10 @@ def getRGBfromI(RGBint):
 
 def hsv(h,s,v):
 
+    print(h)
+    print(s)
+    print(v)
+    print()
     r = 0.0
     g = 0.0
     b = 0.0
