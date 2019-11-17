@@ -29,6 +29,7 @@ def loop():
             led_functions[led_state['type']](strip,led_state)
             if led_state['type'] % 2==0:
                 led_state['type']+=1
+            strip.show()
         else:
             time.sleep(0.01)
 
