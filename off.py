@@ -26,7 +26,7 @@ def update(strip, data):
 
     if onStateChanged:
         if fading > 0:
-            for i in range (0,(data['num_pixel'] / fadingSize) - fadingSize):
+            for i in range (0,int((data['num_pixel'] / fadingSize) - fadingSize)):
                 if i * fadingSize + offState > data['num_pixel'] - 1:
                     fading = 0
                     break
