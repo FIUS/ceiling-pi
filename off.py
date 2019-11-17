@@ -2,7 +2,7 @@ import random
 import colorMagic as cm
 from neopixel import *
 pixelsLeft=None
-speed=10
+speed=5
 
 def init(strip, data):
     global pixelsLeft
