@@ -2,6 +2,7 @@ import random
 import colorMagic as cm
 from neopixel import *
 pixelsLeft=None
+speed=20
 
 def init(strip, data):
     global pixelsLeft
@@ -10,7 +11,8 @@ def init(strip, data):
 def update(strip, data):
     global pixelsLeft
     
-    if len(pixelsLeft)>0:
-        offLED=random.randrange(len(pixelsLeft))
-        strip.setPixelColor(pixelsLeft[offLED],cm.rgb(0,0,0))
-        pixelsLeft.pop(offLED)
+    for i in range(speed):
+        if len(pixelsLeft)>0:
+            offLED=random.randrange(len(pixelsLeft))
+            strip.setPixelColor(pixelsLeft[offLED],cm.rgb(0,0,0))
+            pixelsLeft.pop(offLED)
