@@ -11,9 +11,9 @@ def getRGBfromI(RGBint):
 
 def hsv(h,s,v):
 
-    r = 0.
-    g = 0.
-    b = 0.
+    r = 0.0
+    g = 0.0
+    b = 0.0
 
     h_i = h * 360 / 60.0
     f = h * 360 / 60.0 - h_i
@@ -47,4 +47,4 @@ def hsv(h,s,v):
         g = p
         b = q
 
-    return Color(rgb(r,g,b))
+    return rgb(r,g,b)
