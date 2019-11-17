@@ -14,15 +14,18 @@ def color():
     
     content=request.json
     led.led_state['color']=content
-    led.led_state['type']=0
+    led.led_state['type']=2
     print("Color set: "+str(content))
     return "Ok"
 
 @app.route("/animationType")
 def animationType():
     '''Input as json in form of {type:5} '''
-    print("test")
-    return "Hi"
+    content=request.json
+    print(content.type)
+    led-led_state['type']=content.type
+    
+    return "OK"
 
 @app.route("/get")
 def get():
