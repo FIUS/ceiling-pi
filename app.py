@@ -9,6 +9,7 @@ threading.Thread(target=led.loop).start()
 @app.route("/color", methods=['POST'])
 def color():
     ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
+    print (request.is_json)
     content=request.json
     led.color=content
     print("Color set: "+str(content))
