@@ -1,7 +1,7 @@
 from neopixel import *
 
 def rgb(r,g,b):
-    return Color(g,r,b)
+    return Color(int(g),int(r),int(b))
 
 def getRGBfromI(RGBint):
     blue =  RGBint & 255
