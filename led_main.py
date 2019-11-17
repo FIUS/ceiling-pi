@@ -7,7 +7,9 @@ tick = None
 minDeltaTime = None
 color = [0,0,0]
 led_functions=None
-led_state=0
+led_state={
+    'type':0
+}
 
 
 def getMilis():
@@ -20,7 +22,7 @@ def loop():
     while True:
         delta = getMilis()-tick
         if delta > minDeltaTime:
-            led_functions[led_state](strip)
+            led_functions[led_state['type']](strip,led_state)
             if led_state % 2==0:
                 led_state+=1
         else:
