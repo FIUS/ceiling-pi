@@ -20,7 +20,7 @@ def loop():
     while True:
         delta = getMilis()-tick
         if delta > minDeltaTime:
-            led_functions[led_state](neo.strip)
+            led_functions[led_state](strip)
             if led_state % 2==0:
                 led_state+=1
         else:
