@@ -21,6 +21,11 @@ def hsv(h,s,v):
     q = v * (1 - s * f)
     t = v * (1 - s * (1 - f))
 
+    print(h_i)
+    print(f)
+    print(p)
+    print(q)
+    print(t)
 
     if h_i==0 or h_i==6:
         r = v
@@ -47,10 +52,7 @@ def hsv(h,s,v):
         g = p
         b = q
 
-    print(r)
-    print(g)
-    print(b)
-    print()
+    
 
 
     return rgb(r,g,b)
