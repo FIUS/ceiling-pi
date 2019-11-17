@@ -1,5 +1,6 @@
 import random
 import colorMagic as cm
+from neopixel import *
 pixelsLeft=None
 
 def init(strip, data):
