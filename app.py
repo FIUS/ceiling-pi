@@ -22,7 +22,7 @@ def color():
 def animationType():
     '''Input as json in form of {type:5} '''
     content=request.json
-    print(content.type)
+    print(content)
     led.led_state['type']=content.type
     
     return "OK"
