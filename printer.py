@@ -22,7 +22,7 @@ def magicOverride(strip, data):
         
             else:
                 for i in range(852,883):
-                    strip.setPixelColor(tempColor[i - 852])
+                    strip.setPixelColor(i,tempColor[i - 852])
             
             printerTemp = 23
 
