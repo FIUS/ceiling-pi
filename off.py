@@ -24,10 +24,13 @@ def update(strip, data):
     global onStateChanged
     global slowFade
     global offState
-    print("lala")
+    
     if onStateChanged:
+        print("1")
         if fading > 0:
+            print("2")
             for i in range (0,int((data['num_pixel'] / fadingSize) - fadingSize)):
+                print("3")
                 if i * fadingSize + offState > data['num_pixel'] - 1:
                     fading = 0
                     break
