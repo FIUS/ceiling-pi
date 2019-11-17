@@ -10,7 +10,7 @@ def getRGBfromI(RGBint):
     return (red, green, blue)
 
 def hsv(h,s,v):
-
+    '''h,s,v in range [0,1]'''
     r = 0.0
     g = 0.0
     b = 0.0
@@ -55,4 +55,4 @@ def hsv(h,s,v):
     
 
 
-    return rgb(r,g,b)
+    return rgb(r*255,g*255,b*255)
