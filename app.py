@@ -18,7 +18,7 @@ def color():
     print("Color set: "+str(content))
     return "Ok"
 
-@app.route("/animationType")
+@app.route("/animationType", methods=['POST'])
 def animationType():
     '''Input as json in form of {type:5} '''
     content=request.json
