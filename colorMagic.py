@@ -3,6 +3,12 @@ from neopixel import *
 def rgb(r,g,b):
     return Color(g,r,b)
 
+def getRGBfromI(RGBint):
+    blue =  RGBint & 255
+    green = (RGBint >> 8) & 255
+    red =   (RGBint >> 16) & 255
+    return (red, green, blue)
+
 def hsv(h,s,v):
 
     r = 0.

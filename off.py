@@ -32,22 +32,23 @@ def update(strip, data):
                     break
                 
                 if slowFade:
-                    r = leds[i * fadingSize + offState].r / 2
-                    g = leds[i * fadingSize + offState].g / 2
-                    b = leds[i * fadingSize + offState].b / 2
-                    leds[i * fadingSize + offState] = CRGB(r, g, b)
+                    clr=cm.getRGBfromI(strip.getPixelColor(i * fadingSize + offState))
+                    r = clr[0] / 2
+                    g = clr[1] / 2
+                    b = clr[2] / 2
+                    strip.setPixelColor(i * fadingSize + offState,cm.rgb(r, g, b))
 
                 else:
-                    leds[i * fadingSize + offState] = CRGB(0, 0, 0)
+                    strip.setPixelColor(i * fadingSize + offState, cm.rgb(0, 0, 0))
 
-            leds[offState] = CRGB(0, 0, 0)
+            strip.setPixelColor(offState, cm.rgb(0, 0, 0))
             offState+=1
             slowFade = not slowFade
 
             fading-=1
             else:
                 for i in range(0,data['num_pixel']):
-                    leds[i] = CRGB(0, 0, 0)
+                    strip.setPixelColor(i, cm.rgb(0, 0, 0))
                 onStateChanged = False
             
 
