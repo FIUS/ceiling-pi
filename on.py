@@ -4,10 +4,12 @@ state=0
 speed=5
 
 def init(strip, data):
+    global state
     state=0
 
 def update(strip, data):
-    global pixelsLeft
+    global state
+    global speed
     
     if state<255:
         for i in range(0,data['num_pixel']):
