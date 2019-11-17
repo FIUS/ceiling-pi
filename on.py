@@ -13,8 +13,10 @@ def update(strip, data):
     
     if state<255:
         for i in range(0,data['num_pixel']):
-            strip.setPixelColor(i, cm.hsv(0.18,1,state/255.0))
-            
+            if i > 22 and i < 115 or i > 192 and i < 300
+                strip.setPixelColor(i, cm.hsv(0.18,1,state/255.0))
+            else:
+                strip.setPixelColor(i, cm.hsv(0.18,0,state/255.0))
         state+=speed
         if state>255:
             state=255

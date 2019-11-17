@@ -21,9 +21,9 @@ def color():
 def animationType():
     '''Input as json in form of {"type":5} '''
     content=request.json
-    led.led_state['type']=content['type']
+    led.led_state['type']=content['type']*2
     
-    return "State ist now "+str(content['type'])
+    return "State ist now "+str(content['type']*2)
 
 @app.route("/get")
 def get():
