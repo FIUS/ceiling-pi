@@ -46,10 +46,8 @@ def update(strip, data):
             slowFade = not slowFade
 
             fading-=1
-            else:
-                for i in range(0,data['num_pixel']):
-                    strip.setPixelColor(i, cm.rgb(0, 0, 0))
-                onStateChanged = False
+        else:
+            for i in range(0,data['num_pixel']):
+                strip.setPixelColor(i, cm.rgb(0, 0, 0))
+            onStateChanged = False
             
-
-    
