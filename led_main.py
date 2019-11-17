@@ -5,10 +5,11 @@ import plainColor
 fps = None
 tick = None
 minDeltaTime = None
-color = [0,0,0]
+
 led_functions=None
 led_state={
     'type':0
+    'color' : [0,50,0]
 }
 
 
