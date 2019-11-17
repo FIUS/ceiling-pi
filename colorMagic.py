@@ -17,9 +17,9 @@ def hsv(h,s,v):
 
     h_i = h * 360 / 60.0
     f = h * 360 / 60.0 - h_i
-    p = v * (1 - s)
-    q = v * (1 - s * f)
-    t = v * (1 - s * (1 - f))
+    p = v * float(1 - s)
+    q = v * float(1 - s * f)
+    t = v * float(1 - s * float(1 - f))
 
     print(h_i)
     print(f)
