@@ -16,6 +16,7 @@ def getMilis():
 def loop():
     global tick
     global minDeltaTime
+    global led_state
     while True:
         delta = getMilis()-tick
         if delta > minDeltaTime:
