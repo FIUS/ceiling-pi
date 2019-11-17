@@ -8,7 +8,7 @@ minDeltaTime = None
 
 led_functions=None
 led_state={
-    'type':0
+    'type':0,
     'color' : [0,50,0]
 }
 
