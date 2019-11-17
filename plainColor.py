@@ -6,6 +6,7 @@ def init(strip, data):
         clr=cm.rgb(data['color'][0],data['color'][1],data['color'][2])
         strip.setPixelColor(i, clr)
     strip.show()
+    print(strip.getPixelColor(5))
 
 def update(strip, data):
     return None

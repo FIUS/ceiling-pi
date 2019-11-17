@@ -2,15 +2,17 @@ import time
 from neo import *
 import plainColor
 
-fps = None
-tick = None
-minDeltaTime = None
-
-led_functions=None
 led_state={
     'type':0,
     'color' : [0,50,0]
 }
+
+fps = None
+tick = None
+minDeltaTime = None
+led_functions=None
+
+led_state['num_pixel']=strip.numPixels()
 
 
 def getMilis():
