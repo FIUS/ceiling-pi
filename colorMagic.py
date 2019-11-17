@@ -20,13 +20,7 @@ def hsv(h,s,v):
     p = v * float(1 - s)
     q = v * float(1 - s * f)
     t = v * float(1 - s * float(1 - f))
-
-    print(h_i)
-    print(f)
-    print(p)
-    print(q)
-    print(t)
-
+    
     if h_i==0 or h_i==6:
         r = v
         g = t
