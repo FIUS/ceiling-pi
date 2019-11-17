@@ -17,13 +17,14 @@ def init(strip, data):
     fading = data['num_pixel']
     onStateChanged = True
     offState = 0
+    print("lul")
 
 def update(strip, data):
     global fading
     global onStateChanged
     global slowFade
     global offState
-
+    print("lala")
     if onStateChanged:
         if fading > 0:
             for i in range (0,int((data['num_pixel'] / fadingSize) - fadingSize)):

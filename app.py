@@ -20,7 +20,7 @@ def color():
 
 @app.route("/animationType", methods=['POST'])
 def animationType():
-    '''Input as json in form of {type:5} '''
+    '''Input as json in form of {"type":5} '''
     content=request.json
     print(content)
     led.led_state['type']=content['type']
