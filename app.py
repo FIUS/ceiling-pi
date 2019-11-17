@@ -42,8 +42,11 @@ def doorClosed():
 
 @app.route("/printer")
 def printer():
-    print("test")
-    return "Hi"
+    ''' Input as json in form of {"color":0.1} - Number in 0<=n<=1'''
+    content=request.json
+    led.led_state['printer-color']=content['color']
+    led.led_state['printerStart']=600
+    return "Ok"
 
 
 app.run(host="0.0.0.0")
