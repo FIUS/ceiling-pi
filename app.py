@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import led_main as led
 import threading
+import json
 
 app=Flask(__name__)
 
@@ -11,7 +12,7 @@ def color():
     ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
     print (request.is_json)
     content=request.json
-    led.color=content
+    led.led_state['color']=json.loads(content)
     print("Color set: "+str(content))
     return "Ok"
 
