@@ -4,6 +4,7 @@ import printer
 import off
 import on
 import plainColor
+import binaryCounter
 
 led_state={
     'type':0,
@@ -47,7 +48,9 @@ led_functions=[
     on.init,
     on.update,
     plainColor.init,
-    plainColor.update
+    plainColor.update,
+    binaryCounter.init,
+    binaryCounter.update
 ]
 
 fps = 60
