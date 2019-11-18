@@ -7,6 +7,9 @@ brightnessCap=70
 def init(strip, data):
     global state
     state=0
+    for i in range(0,data['num_pixel']):
+        strip.setPixelColor(i, cm.rgb(0,0,0))
+
 
 def update(strip, data):
     global state
