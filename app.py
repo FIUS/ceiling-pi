@@ -13,7 +13,7 @@ def color():
     
     content=request.json
     led.led_state['color']=content
-    led.led_state['type']=2
+    led.led_state['type']=4
 
     return "Ok"
 
