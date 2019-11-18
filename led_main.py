@@ -28,15 +28,18 @@ def loop():
     global minDeltaTime
     global led_state
     while True:
-        delta = getMilis()-tick
-        if delta > minDeltaTime:
-            led_functions[led_state['type']](strip,led_state)
-            if led_state['type'] % 2==0:
-                led_state['type']+=1
-            printer.magicOverride(strip, led_state)
-            strip.show()
-        else:
-            time.sleep(0.01)
+        try:
+            delta = getMilis()-tick
+            if delta > minDeltaTime:
+                led_functions[led_state['type']](strip,led_state)
+                if led_state['type'] % 2==0:
+                    led_state['type']+=1
+                printer.magicOverride(strip, led_state)
+                strip.show()
+            else:
+                time.sleep(0.01)
+        except:
+            print("Something went wrong !!!")
 
 led_functions=[
     off.init,
