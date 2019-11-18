@@ -1,6 +1,5 @@
 import colorMagic as cm
 from neopixel import *
-import strconv
 
 state = 0
 speed = 5
@@ -16,7 +15,7 @@ def init(strip, data):
 def update(strip, data):
     global state
     global speed
-    zahl = strconv.FormatInt(state, 2)
+    zahl = "{0:b}".format(state)
 
     for i in range(0, data['num_pixel']):
         if len(zahl)>0:
