@@ -22,13 +22,13 @@ def update(strip, data):
             x = int(zahl[len(zahl)-1:len(zahl)])
             zahl = zahl[:len(zahl)-1]
             if x == 0:
-                for f in range(0,binarySize):
+                for f in range(1,binarySize):
                     strip.setPixelColor(i*binarySize+f, cm.rgb(0, 0, 0))
             else:
-                for f in range(0,binarySize):
+                for f in range(1,binarySize):
                     strip.setPixelColor(i*binarySize+f, cm.rgb(data['color'][0],data['color'][1],data['color'][2]))
         else:
-            for f in range(0,binarySize):
+            for f in range(1,binarySize):
                 strip.setPixelColor(i*binarySize+f, cm.rgb(0, 0, 0))
 
     state += speed
