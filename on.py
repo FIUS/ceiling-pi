@@ -2,7 +2,7 @@ import colorMagic as cm
 from neopixel import *
 state=0
 speed=5
-brightnessCap=70
+brightnessCap=110
 
 def init(strip, data):
     global state
@@ -18,9 +18,9 @@ def update(strip, data):
     if state<255:
         for i in range(0,data['num_pixel']):
             if i > 22 and i < 115 or i > 192 and i < 300:
-                strip.setPixelColor(i, cm.hsv(0.16,0,state/(255.0+brightnessCap)))
+                strip.setPixelColor(i, cm.hsv(0.14,0,state/(255.0+brightnessCap)))
             else:
-                strip.setPixelColor(i, cm.hsv(0.16,1,state/(255.0+brightnessCap)))
+                strip.setPixelColor(i, cm.hsv(0.14,1,state/(255.0+brightnessCap)))
         state+=speed
         if state>255:
             state=255
