@@ -1,3 +1,3 @@
 # ceiling-pi
 ## Service File
-The script is run in a Service store in /etc/systemd/system/led.services
+The script is run in a Service stored in /etc/systemd/system/led.services
