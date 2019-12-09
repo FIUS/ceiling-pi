@@ -1,6 +1,11 @@
 import pyaudio
 import numpy as np
 
+chunk      = 2**11 # Change if too fast/slow, never less than 2**11
+scale      = 50    # Change if too dim/bright
+exponent   = 5     # Change if too little/too much difference between loud and quiet sounds
+samplerate = 44100
+
 def calculate_levels(data, chunk, samplerate):
     # Use FFT to calculate volume for each frequency
     global MAX
