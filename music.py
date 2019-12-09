@@ -21,20 +21,20 @@ def calculate_levels(data, chunk, samplerate):
  
     # Apply FFT
     fourier = numpy.fft.fft(data2)
-    ffty = numpy.abs(fourier[0:len(fourier)/2])/1000
-    ffty1=ffty[:len(ffty)/2]
-    ffty2=ffty[len(ffty)/2::]+2
+    ffty = numpy.abs(fourier[0:int(len(fourier)/2]))/1000
+    ffty1=ffty[:int(len(ffty)/2)]
+    ffty2=ffty[int(len(ffty)/2)::]+2
     ffty2=ffty2[::-1]
     ffty=ffty1+ffty2
     ffty=numpy.log(ffty)-2
    
     fourier = list(ffty)[4:-4]
-    fourier = fourier[:len(fourier)/2]
+    fourier = fourier[:int(len(fourier)/2)]
    
     size = len(fourier)
  
     # Add up for 6 lights
-    levels = [sum(fourier[i:(i+size/6)]) for i in xrange(0, size, size/6)][:6]
+    levels = [sum(fourier[i:int((i+size/6))]) for i in xrange(0, size, size/6)][:6]
    
     return levels
 
