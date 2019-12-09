@@ -21,7 +21,7 @@ def calculate_levels(data, chunk, samplerate):
  
     # Apply FFT
     fourier = numpy.fft.fft(data2)
-    ffty = numpy.abs(fourier[0:int(len(fourier)/2]))/1000
+    ffty = numpy.abs(fourier[0:int(len(fourier)/2)])/1000
     ffty1=ffty[:int(len(ffty)/2)]
     ffty2=ffty[int(len(ffty)/2)::]+2
     ffty2=ffty2[::-1]
