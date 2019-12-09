@@ -44,19 +44,19 @@ RATE = 44100 # time resolution of the recording device (Hz)
 p=pyaudio.PyAudio() # start the PyAudio class
 stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) #uses default input device
+while(True):
+    data  = stream.read(chunk)
+    
+    # Do FFT
+    levels = calculate_levels(data, chunk, samplerate)
 
-data  = stream.read(chunk)
- 
-# Do FFT
-levels = calculate_levels(data, chunk, samplerate)
+    # Make it look better and send to serial
+    for level in levels:
+        level = max(min(level / scale, 1.0), 0.0)
+        level = level**exponent
+        level = int(level * 255)
 
-# Make it look better and send to serial
-for level in levels:
-    level = max(min(level / scale, 1.0), 0.0)
-    level = level**exponent
-    level = int(level * 255)
-
-print(levels)
+    print(levels)
 
 # close the stream gracefully
 stream.stop_stream()
