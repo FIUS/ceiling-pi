@@ -34,7 +34,7 @@ def calculate_levels(data, chunk, samplerate):
     size = len(fourier)
  
     # Add up for 6 lights
-    levels = [sum(fourier[i:int((i+size/6))]) for i in range(0, size, size/6)][:6]
+    levels = [sum(fourier[i:int((i+size/6))]) for i in range(0, size, int(size/6))][:6]
    
     return levels
 
