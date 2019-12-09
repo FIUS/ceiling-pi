@@ -4,7 +4,6 @@ import numpy   # from http://numpy.scipy.org/
 import audioop
 import sys
 import math
-import struct
 
 chunk      = 2**11 # Change if too fast/slow, never less than 2**11
 scale      = 50    # Change if too dim/bright
