@@ -1,5 +1,4 @@
 import pyaudio # from http://people.csail.mit.edu/hubert/pyaudio/
-import serial  # from http://pyserial.sourceforge.net/
 import numpy   # from http://numpy.scipy.org/
 import audioop
 import sys
