@@ -1,4 +1,5 @@
 import time
+import requests
 
 doorIsOpen = True
 led_state=None
