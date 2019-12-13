@@ -32,10 +32,10 @@ def setDoorOpen(state):
             
             if doorIsOpen:
                 print("Door was opened")
-                doCheckedPostRequestWithBody("http://127.0.0.1/animationType",1)
+                doCheckedPostRequestWithBody("http://127.0.0.1:5000/animationType",1)
             else:
                 print("Door was closed")
-                doCheckedPostRequestWithBody("http://127.0.0.1/animationType",0)
+                doCheckedPostRequestWithBody("http://127.0.0.1:5000/animationType",0)
 
         except:
             print("Error")
