@@ -15,7 +15,7 @@ def doCheckedPostRequestWithBody(url,state):
         print("Error in post: ", e)
 
 def checkDoor():
-    print("Checking door...")
+    
     r = requests.get("http://fius.informatik.uni-stuttgart.de/isOpen.php")
     try:
         if r.text == "open":
