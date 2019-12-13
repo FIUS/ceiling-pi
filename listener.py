@@ -4,8 +4,9 @@ import requests
 doorIsOpen = True
 
 def routine():
-    checkDoor()
-    time.sleep(1)
+    while True:
+        checkDoor()
+        time.sleep(1)
 
 def doCheckedPostRequestWithBody(url,state):
     try:
