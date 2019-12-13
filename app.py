@@ -23,7 +23,7 @@ def animationType():
     content=request.json
     led.led_state['type']=content['type']*2
     
-    return "State ist now "+str(content['type']*2)
+    return "State ist now "+str(content['type'])
 
 @app.route("/get")
 def get():
