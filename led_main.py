@@ -22,8 +22,6 @@ led_functions=None
 
 led_state['num_pixel']=strip.numPixels()
 
-listener.init(led_state)
-
 threading.Thread(target=listener.routine).start()
 
 def getMilis():
