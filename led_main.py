@@ -5,6 +5,7 @@ import off
 import on
 import plainColor
 import binaryCounter
+import listener
 
 led_state={
     'type':0,
@@ -20,6 +21,9 @@ led_functions=None
 
 led_state['num_pixel']=strip.numPixels()
 
+listener.init(led_state)
+
+threading.Thread(target=listener.routine).start()
 
 def getMilis():
     return int(round(time.time() * 1000))
