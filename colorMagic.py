@@ -46,7 +46,4 @@ def hsv(h,s,v):
         g = p
         b = q
 
-    
-
-
     return rgb(r*255,g*255,b*255)

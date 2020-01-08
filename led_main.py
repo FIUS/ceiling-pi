@@ -5,11 +5,13 @@ import off
 import on
 import plainColor
 import binaryCounter
+import music
 import listener
 import threading
+import traceback
 
 led_state={
-    'type':0,
+    'type':8,
     'color' : [0,50,0],
     'printer-color':0,
     'printerStart':400
@@ -42,8 +44,10 @@ def loop():
                 strip.show()
             else:
                 time.sleep(0.01)
-        except:
-            print("Something went wrong !!!")
+        except Exception as e:
+            traceback.print_exc()
+            print("Something went wrong !!!",e)
+            exit()
 
 led_functions=[
     off.init,
@@ -53,7 +57,9 @@ led_functions=[
     plainColor.init,
     plainColor.update,
     binaryCounter.init,
-    binaryCounter.update
+    binaryCounter.update,
+    music.init,
+    music.update
 ]
 
 fps = 60
