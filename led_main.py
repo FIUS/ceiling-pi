@@ -61,8 +61,8 @@ led_functions=[
     binaryCounter.update,
     music.init,
     music.update,
-    rainbow.init,
-    rainbow.update
+    lsd.init,
+    lsd.update
 ]
 
 fps = 60
