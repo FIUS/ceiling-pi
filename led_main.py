@@ -6,7 +6,7 @@ import on
 import plainColor
 import binaryCounter
 import music
-import rainbow
+import lsd
 import listener
 import threading
 import traceback
