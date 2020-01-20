@@ -6,6 +6,7 @@ import on
 import plainColor
 import binaryCounter
 import music
+import rainbow
 import listener
 import threading
 import traceback
@@ -59,7 +60,9 @@ led_functions=[
     binaryCounter.init,
     binaryCounter.update,
     music.init,
-    music.update
+    music.update,
+    rainbow.init,
+    rainbow.update
 ]
 
 fps = 60

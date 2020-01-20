@@ -142,8 +142,7 @@ def record():
         if isBeat:
             thresh=max(thresh-1000,2000)
         else:
-            thresh=min(thresh+1500,20000)
+            thresh=min(thresh+1500,6000)
 
-        print(thresh)
 recording = threading.Thread(target=record)
 recording.start()
