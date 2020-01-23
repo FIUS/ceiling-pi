@@ -121,38 +121,40 @@ def record():
     global lock
     global boxState
 
-    stream = p.open(format=FORMAT,
-                channels=CHANNELS,
-                rate=RATE,
-                input=True,
-                frames_per_buffer=CHUNK,
-                input_device_index = 0)
-
     thresh=5000
 
     while True:
-            
-        data = np.frombuffer(stream.read(CHUNK, exception_on_overflow = False),dtype=np.int16)   
-        peak=np.average(np.abs(data))*2
-        #print("musicstate ",float(thresh)*peak/2**16)
-        epPeak=int(thresh*peak/2**16)
-        ykout=data
-        #CS-------
-        #lock.acquire()
-        isBeat=epPeak>0
-        isESwitch=float(thresh)*peak/2**16>0.35
-        threadstate=True
-        #lock.release()
-        #CS-------
+        try:
+            stream = p.open(format=FORMAT,
+                    channels=CHANNELS,
+                    rate=RATE,
+                    input=True,
+                    frames_per_buffer=CHUNK,
+                    input_device_index = 0)
+            data = np.frombuffer(stream.read(CHUNK, exception_on_overflow = False),dtype=np.int16)
+            stream.close()
+            peak=np.average(np.abs(data))*2
+            #print("musicstate ",float(thresh)*peak/2**16)
+            epPeak=int(thresh*peak/2**16)
+            ykout=data
+            #CS-------
+            #lock.acquire()
+            isBeat=epPeak>0
+            isESwitch=float(thresh)*peak/2**16>0.30
+            threadstate=True
+            #lock.release()
+            #CS-------
 
-        if isESwitch:
-            boxState+=1
-            boxState=min(boxState,30)
+            if isESwitch:
+                boxState+=1
+                boxState=min(boxState,30)
 
-        if isBeat:
-            thresh=max(thresh-1000,2000)
-        else:
-            thresh=min(thresh+1500,6000)
+            if isBeat:
+                thresh=max(thresh-1000,2000)
+            else:
+                thresh=min(thresh+1500,6000)
+        except Exception as e:
+            print("Spotify mag das nicht")
 
 
 
@@ -162,7 +164,7 @@ def boxControll():
     mqttc = mqtt.MQTT_Handler()
 
     while True:
-        #print("state: ",boxState)
+        print("state: ",boxState)
         time.sleep(5)
         if boxOn and boxState<1:
             boxOn=False
