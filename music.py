@@ -7,9 +7,11 @@ import math
 import sys
 import threading 
 from threading import Lock
-
+import MQTT_Handler as mqtt
 import pyaudio
 import wave
+import time
+import mqttconfig as config
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
@@ -30,6 +32,8 @@ threadstate=False
 isBeat=None
 blobState=0
 blobColour=1
+boxState=0
+boxOn=False
 
 def init(strip, data):
     global pixelState
@@ -115,6 +119,7 @@ def record():
     global threadstate
     global isBeat
     global lock
+    global boxState
 
     stream = p.open(format=FORMAT,
                 channels=CHANNELS,
@@ -129,20 +134,52 @@ def record():
             
         data = np.frombuffer(stream.read(CHUNK, exception_on_overflow = False),dtype=np.int16)   
         peak=np.average(np.abs(data))*2
-        bars="#"*int(thresh*peak/2**16)
+        #print("musicstate ",float(thresh)*peak/2**16)
         epPeak=int(thresh*peak/2**16)
         ykout=data
         #CS-------
         #lock.acquire()
         isBeat=epPeak>0
+        isESwitch=float(thresh)*peak/2**16>0.35
         threadstate=True
         #lock.release()
         #CS-------
+
+        if isESwitch:
+            boxState+=1
+            boxState=min(boxState,30)
 
         if isBeat:
             thresh=max(thresh-1000,2000)
         else:
             thresh=min(thresh+1500,6000)
 
+
+
+def boxControll():
+    global boxState
+    global boxOn
+    mqttc = mqtt.MQTT_Handler()
+
+    while True:
+        #print("state: ",boxState)
+        time.sleep(5)
+        if boxOn and boxState<1:
+            boxOn=False
+            mqttc.publish(config.MQTT_SOUND_CONTROL, "OFF")
+        
+        if not boxOn and boxState>10:
+            boxOn=True
+            mqttc.publish(config.MQTT_SOUND_CONTROL, "ON")
+        
+        boxState-=2
+
+        boxState=max(0,boxState)
+
+
+
 recording = threading.Thread(target=record)
 recording.start()
+
+box = threading.Thread(target=boxControll)
+box.start()
