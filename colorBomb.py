@@ -11,9 +11,9 @@ def init(strip, data):
     for i in range(0,data['num_pixel']):
         upOrDown=bool(rdm.randint(0,1))
         if upOrDown:
-            last+=0.05
+            last+=0.01
         else:
-            last-=0.05
+            last-=0.01
         last%=1.0
         colorArray.append(last)
         print(last)
