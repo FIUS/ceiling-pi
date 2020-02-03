@@ -15,15 +15,15 @@ def doCheckedPostRequestWithBody(url,state):
         print("Error in post: ", e)
 
 def checkDoor():
-    
-    r = requests.get("http://fius.informatik.uni-stuttgart.de/isOpen.php")
     try:
+        r = requests.get("http://fius.informatik.uni-stuttgart.de/isOpen.php")
+    
         if r.text == "open":
             setDoorOpen(True)
         else:
             setDoorOpen(False)
     except:
-        print("Error")
+        print("Error while checking door")
 
 def setDoorOpen(state):
     global doorIsOpen
