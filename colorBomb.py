@@ -30,7 +30,7 @@ def update(strip, data):
 
     for idx,clr in enumerate(colorArray):
         if distance>30:
-            point=rdm.randint(0,data['num_pixel'])
+            point=rdm.randint(0,data['num_pixel']-1)
             distance=0
         if distance==0:
             colorArray[point]=(colorArray[point]+colorDistance)%1.0
