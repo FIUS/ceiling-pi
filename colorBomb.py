@@ -28,7 +28,7 @@ def update(strip, data):
     global point
     global distance
     modifier=0
-    if bool(rdm.randint(0,1))
+    if bool(rdm.randint(0,1)):
         modifier=-1
     else:
         modifier=1
