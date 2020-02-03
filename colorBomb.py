@@ -5,7 +5,7 @@ import random as rdm
 colorArray=None
 point=0
 distance=0
-colorDistance=0.005
+colorDistance=0.008
 
 def init(strip, data):
     global colorArray
@@ -30,7 +30,7 @@ def update(strip, data):
 
     for idx,clr in enumerate(colorArray):
         if distance>30:
-            point=rdm.randint(0,data['num_pixel']-1)
+            point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
             distance=0
         if distance==0:
             colorArray[point]=(colorArray[point]+colorDistance)%1.0
