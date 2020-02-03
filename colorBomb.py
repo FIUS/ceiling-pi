@@ -27,16 +27,17 @@ def update(strip, data):
     global colorArray
     global point
     global distance
-    modifier=0
-    if bool(rdm.randint(0,1)):
-        modifier=-20
-    else:
-        modifier=20
+    
         
     
     if distance>100:
         point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
         distance=0
+        modifier=0
+        if bool(rdm.randint(0,1)):
+            modifier=-20
+        else:
+            modifier=20
         print("changed")
     if distance==0:
         colorArray[point]=(colorArray[point]+colorDistance*modifier)%1.0
