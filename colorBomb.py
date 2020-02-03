@@ -29,9 +29,9 @@ def update(strip, data):
     global distance
     modifier=0
     if bool(rdm.randint(0,1)):
-        modifier=-40
+        modifier=-20
     else:
-        modifier=40
+        modifier=20
         
     
     if distance>100:
