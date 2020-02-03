@@ -14,6 +14,7 @@ def init(strip, data):
             last+=0.05
         else:
             last-=0.05
+        last%=1.0
         colorArray.append(last)
         print(last)
         strip.setPixelColor(i, cm.hsv(last,1,1))
