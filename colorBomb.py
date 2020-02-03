@@ -19,7 +19,7 @@ def init(strip, data):
             last-=colorDistance
         last%=1.0
         colorArray.append(last)
-        print(last)
+        
         strip.setPixelColor(i, cm.hsv(last,1,1))
 
 
@@ -45,6 +45,7 @@ def update(strip, data):
         distance+=1
 
     for clr,idx in enumerate(colorArray):
+        print(clr)
         strip.setPixelColor(idx, cm.hsv(clr,1,1))
     
     
