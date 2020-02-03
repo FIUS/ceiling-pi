@@ -36,6 +36,7 @@ def update(strip, data):
             state=255
     else:
         if dayColor!=colorToSet:
+            print("changed color due daytime")
             for i in range(0,data['num_pixel']):
                 if i > 22 and i < 115 or i > 192 and i < 300:
                     strip.setPixelColor(i, cm.hsv(0.14,0,state/(255.0+brightnessCap)))
