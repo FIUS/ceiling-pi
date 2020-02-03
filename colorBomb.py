@@ -45,7 +45,8 @@ def update(strip, data):
         distance+=1
 
     for clr,idx in enumerate(colorArray):
-        print(clr)
+        print("color",clr)
+        print("idx",idx)
         strip.setPixelColor(idx, cm.hsv(clr,1,1))
     
     
