@@ -32,21 +32,21 @@ def update(strip, data):
         modifier=-1
     else:
         modifier=1
-
+        
     for idx,clr in enumerate(colorArray):
         if distance>30:
             point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
             distance=0
         if distance==0:
-            colorArray[point]=(colorArray[point]+colorDistance)*modifier%1.0
+            colorArray[point]=(colorArray[point]+colorDistance*modifier)%1.0
         else:
             ##To the left
             tempPoint=(point+distance)%data['num_pixel']
-            colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance/distance)*modifier%1.0
+            colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance*modifier/distance)%1.0
 
             #To the right
             tempPoint=(point-distance)%data['num_pixel']
-            colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance/distance)*modifier%1.0
+            colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance*modifier/distance)%1.0
         distance+=1
 
     for idx,clr in enumerate(colorArray):
