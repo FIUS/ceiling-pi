@@ -13,7 +13,7 @@ import threading
 import traceback
 
 led_state={
-    'type':12,
+    'type':0,
     'color' : [0,50,0],
     'printer-color':0,
     'printerStart':400
