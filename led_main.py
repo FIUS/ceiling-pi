@@ -7,12 +7,13 @@ import plainColor
 import binaryCounter
 import music
 import lsd
+import colorBomb
 import listener
 import threading
 import traceback
 
 led_state={
-    'type':0,
+    'type':12,
     'color' : [0,50,0],
     'printer-color':0,
     'printerStart':400
@@ -62,7 +63,9 @@ led_functions=[
     music.init,
     music.update,
     lsd.init,
-    lsd.update
+    lsd.update,
+    colorBomb.init,
+    colorBomb.update
 ]
 
 fps = 60
