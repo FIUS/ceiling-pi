@@ -28,7 +28,7 @@ def update(strip, data):
     global point
     global distance
 
-    for clr,idx in enumerate(colorArray):
+    for idx,clr in enumerate(colorArray):
         if distance>30:
             point=rdm.randint(0,data['num_pixel'])
             distance=0
@@ -44,7 +44,7 @@ def update(strip, data):
             colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance)%1.0
         distance+=1
 
-    for clr,idx in enumerate(colorArray):
+    for idx,clr in enumerate(colorArray):
         print("color",clr)
         print("idx",idx)
         strip.setPixelColor(idx, cm.hsv(clr,1,1))
