@@ -23,7 +23,7 @@ def update(strip, data):
     seconds_since_midnight = (now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds()
     seconds_since_midnight=seconds_since_midnight**2
     colorToSet=seconds_since_midnight/7464960000.0
-    colorToSet=int(colorToSet*10000)/10000.0
+    colorToSet=int(colorToSet*1000)/1000.0
     
     if state<255:
         for i in range(0,data['num_pixel']):
