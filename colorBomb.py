@@ -3,6 +3,9 @@ from neopixel import *
 import random as rdm
 
 colorArray=None
+point=0
+distance=0
+colorDistance=0.01
 
 def init(strip, data):
     global colorArray
@@ -11,9 +14,9 @@ def init(strip, data):
     for i in range(0,data['num_pixel']):
         upOrDown=bool(rdm.randint(0,1))
         if upOrDown:
-            last+=0.01
+            last+=colorDistance
         else:
-            last-=0.01
+            last-=colorDistance
         last%=1.0
         colorArray.append(last)
         print(last)
@@ -21,7 +24,27 @@ def init(strip, data):
 
 
 def update(strip, data):
-    global state
-    global speed
+    global colorArray
+    global point
+    global distance
+
+    for clr,idx in enumerate(colorArray):
+        if distance>30:
+            point=rdm.randint(0,data['num_pixel'])
+            distance=0
+        if distance==0:
+            colorArray[point]
+        else:
+            ##To the left
+            tempPoint=(point+distance)%data['num_pixel']
+            colorArray[tempPoint]+=colorDistance
+
+            #To the right
+            tempPoint=(point-distance)%data['num_pixel']
+            colorArray[tempPoint]+=colorDistance
+        distance+=1
+
+    for clr,idx in enumerate(colorArray):
+        strip.setPixelColor(idx, cm.hsv(clr,1,1))
     
     
