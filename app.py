@@ -52,12 +52,17 @@ def printer():
     led.led_state['printerStart']=600
     return "Ok"
 
+@app.route("/getAnimations", methods=['GET'])
+def animations():
+    '''
+    Return the available animations
+    '''
+    yout=[]
+    for i in led.led_functions:
+        name=i.__module__
+        if name not in out:
+            out.append(name)
+    
+    return out
 
 app.run(host="0.0.0.0")
-
-out=[]
-for i in led.led_functions:
-    name=i.__module__
-    if name not in out:
-        out.append(name)
-print(out)
