@@ -55,4 +55,7 @@ def printer():
 
 app.run(host="0.0.0.0")
 
-print(led.led_functions[0].__module__)
+out=set()
+for i in  led.led_functions
+    out.add(i.__module__)
+print(out)
