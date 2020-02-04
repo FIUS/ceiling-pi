@@ -55,7 +55,9 @@ def printer():
 
 app.run(host="0.0.0.0")
 
-out=set()
+out=[]
 for i in led.led_functions:
-    out.add(i.__module__)
+    name=i.__module__
+    if name not in out:
+        out.append(name)
 print(out)
