@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import led_main as led
 import threading
 import json
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS, crossdomain
 
 app=Flask(__name__)
 CORS(app)
