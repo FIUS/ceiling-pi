@@ -63,6 +63,6 @@ def animations():
         if name not in out:
             out.append(name)
     
-    return out
+    return str(out)
 
 app.run(host="0.0.0.0")
