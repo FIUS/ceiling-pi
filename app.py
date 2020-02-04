@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify
 import led_main as led
 import threading
 import json
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app=Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 threading.Thread(target=led.loop).start()
 
