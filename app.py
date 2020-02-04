@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import led_main as led
 import threading
 import json
-from flask_cors import CORS, cross_origin
 
 app=Flask(__name__)
 CORS(app)
@@ -56,7 +55,6 @@ def printer():
     return "Ok"
 
 @app.route("/getAnimations", methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type','Authorization'])
 def animations():
     '''
     Return the available animations
