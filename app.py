@@ -65,7 +65,7 @@ def animations():
     Flask.make_response
     resp = Flask.make_response(str(out))
     resp.headers['Access-Control-Allow-Origin'] = '*'
-
+    print("La")
     return resp
 
 app.run(host="0.0.0.0")
