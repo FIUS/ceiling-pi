@@ -55,6 +55,7 @@ def printer():
     return "Ok"
 
 @app.route("/getAnimations", methods=['GET'])
+@cross_origin()
 def animations():
     '''
     Return the available animations
