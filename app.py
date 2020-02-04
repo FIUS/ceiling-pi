@@ -55,8 +55,8 @@ def printer():
     led.led_state['printerStart']=600
     return "Ok"
 
-@app.route("/getAnimations", methods=['GET'])
-@cross_origin(headers=['Content-Type'])
+@app.route("/getAnimations", methods=['GET','OPTIONS'])
+@crossdomain(origin='*')
 def animations():
     '''
     Return the available animations
