@@ -57,7 +57,7 @@ def animations():
     '''
     Return the available animations
     '''
-    yout=[]
+    out=[]
     for i in led.led_functions:
         name=i.__module__
         if name not in out:
