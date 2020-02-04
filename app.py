@@ -55,4 +55,4 @@ def printer():
 
 app.run(host="0.0.0.0")
 
-print(dir(led.led_functions[0].__module__))
+print(led.led_functions[0].__module__)
