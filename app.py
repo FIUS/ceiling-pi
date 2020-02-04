@@ -62,10 +62,7 @@ def animations():
         name=i.__module__
         if name not in out:
             out.append(name)
-    Flask.make_response
-    resp = Flask.make_response(str(out))
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    print("La")
-    return resp
+    
+    return str(out)
 
 app.run(host="0.0.0.0")
