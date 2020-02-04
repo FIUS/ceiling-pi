@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 import led_main as led
 import threading
 import json
+from flask_cors import CORS
 
 app=Flask(__name__)
+CORS(app)
 
 threading.Thread(target=led.loop).start()
 
