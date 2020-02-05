@@ -4,8 +4,6 @@ import threading
 import json
 
 app=Flask(__name__)
-CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 threading.Thread(target=led.loop).start()
 
