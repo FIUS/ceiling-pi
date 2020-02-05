@@ -5,8 +5,8 @@ import random as rdm
 colorArray=None
 point=0
 distance=0
-colorDistance=0.02
-initColor=0.001
+colorDistance=0.002
+initColor=0.02
 modifier=0
 
 def init(strip, data):
