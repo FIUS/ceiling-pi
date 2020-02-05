@@ -5,7 +5,7 @@ import random as rdm
 colorArray=None
 point=0
 distance=0
-colorDistance=0.01
+colorDistance=0.2
 modifier=0
 
 def init(strip, data):
@@ -30,8 +30,6 @@ def update(strip, data):
     global distance
     global modifier
 
-    modifier=0.002
-    
     if distance>101:
         point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
         distance=0   
@@ -54,17 +52,12 @@ def update(strip, data):
         
         ##To the left
         tempPoint=(point+distance)%data['num_pixel']
-        print(colorArray[tempPoint])
-        print(colorArray[tempPoint]+0.2-colorDistance*modifier)
-        print("mod",modifier)
-        print("dist",colorDistance)
-        print("la",colorDistance*modifier)
-        colorArray[tempPoint]=(colorArray[tempPoint]+0.2-colorDistance*modifier)%1.0
+        colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance-distance*modifier)%1.0
         strip.setPixelColor(tempPoint, cm.hsv(clr,0,1))
 
         #To the right
         tempPoint=(point-distance)%data['num_pixel']
-        colorArray[tempPoint]=(colorArray[tempPoint]+0.2-colorDistance*modifier)%1.0
+        colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance-distance*modifier)%1.0
         strip.setPixelColor(tempPoint, cm.hsv(clr,0,1))
         
     distance+=1
