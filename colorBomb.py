@@ -31,13 +31,13 @@ def update(strip, data):
     global modifier
 
     
-    if distance>10:
+    if distance>100:
         point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
         distance=0   
         if bool(rdm.randint(0,1)):
-            modifier=-1
+            modifier=-40
         else:
-            modifier=1
+            modifier=40
         print("changed")
 
     for idx,clr in enumerate(colorArray):
