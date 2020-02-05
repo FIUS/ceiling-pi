@@ -44,13 +44,13 @@ def update(strip, data):
         strip.setPixelColor(idx, cm.hsv(clr,1,1))
 
     if distance==0:
-        colorArray[point]=(colorArray[point]+colorDistance*modifier)%1.0
+        colorArray[point]=(colorArray[point]+(1-colorDistance)*modifier)%1.0
         strip.setPixelColor(point, cm.hsv(clr,0,1))
 
     else:
         ##To the left
         tempPoint=(point+distance)%data['num_pixel']
-        colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance*modifier)%1.0
+        colorArray[tempPoint]=(colorArray[tempPoint]+(1-colorDistance)*modifier)%1.0
         strip.setPixelColor(tempPoint, cm.hsv(clr,0,1))
 
         #To the right
