@@ -35,9 +35,9 @@ def update(strip, data):
         point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
         distance=0   
         if bool(rdm.randint(0,1)):
-            modifier=-40
+            modifier=-0.001
         else:
-            modifier=40
+            modifier=0.001
         print("changed")
 
     for idx,clr in enumerate(colorArray):
@@ -50,12 +50,12 @@ def update(strip, data):
     else:
         ##To the left
         tempPoint=(point+distance)%data['num_pixel']
-        colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance*modifier/(distance*0.4))%1.0
+        colorArray[tempPoint]=(colorArray[tempPoint]+0.2-colorDistance*modifier)%1.0
         strip.setPixelColor(tempPoint, cm.hsv(clr,0,1))
 
         #To the right
         tempPoint=(point-distance)%data['num_pixel']
-        colorArray[tempPoint]=(colorArray[tempPoint]+colorDistance*modifier/(distance*0.4))%1.0
+        colorArray[tempPoint]=(colorArray[tempPoint]+0.2-colorDistance*modifier)%1.0
         strip.setPixelColor(tempPoint, cm.hsv(clr,0,1))
         
     distance+=1
