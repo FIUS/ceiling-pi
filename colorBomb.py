@@ -44,6 +44,8 @@ def update(strip, data):
         strip.setPixelColor(idx, cm.hsv(clr,1,1))
 
     if distance==0:
+        print()
+        print()
         colorArray[point]=(colorArray[point]+colorDistance*modifier)%1.0
         strip.setPixelColor(point, cm.hsv(clr,0,1))
 
