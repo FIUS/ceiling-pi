@@ -30,6 +30,7 @@ def update(strip, data):
     global distance
     global modifier
 
+    modifier=0.002
     
     if distance>101:
         point=(rdm.randint(0,data['num_pixel']-1)+200)%data['num_pixel']
