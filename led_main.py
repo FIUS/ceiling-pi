@@ -8,6 +8,7 @@ import binaryCounter
 import music
 import lsd
 import colorBomb
+import strobo
 import listener
 import threading
 import traceback
@@ -65,7 +66,9 @@ led_functions=[
     lsd.init,
     lsd.update,
     colorBomb.init,
-    colorBomb.update
+    colorBomb.update,
+    strobo.init,
+    strobo.update
 ]
 
 fps = 60
