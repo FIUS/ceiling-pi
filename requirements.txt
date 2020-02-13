@@ -1,3 +1,4 @@
 rpi.gpio
 psutil
 flask
+paho.mqtt
