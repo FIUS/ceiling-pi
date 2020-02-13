@@ -1,5 +1,13 @@
 from neopixel import *
 
+def fadeAll(strip,strength):
+    for i in range(0,strip.numPixels()):
+        color=strip.getPixelColor(i)
+        r=color[0]/strength
+        g=color[1]/strength
+        b=color[2]/strength
+        strip.setPixelColor(i, rgb(r,g,b))
+
 def rgb(r,g,b):
     return Color(int(g),int(r),int(b))
 
