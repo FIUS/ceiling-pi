@@ -1,5 +1,5 @@
 from neopixel import *
-import colorMagic as cm
+import leds.colorMagic as cm
 
 startRainbow=0.0
 step=0.008

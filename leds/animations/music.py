@@ -1,5 +1,5 @@
 import random
-import colorMagic as cm
+import leds.colorMagic as cm
 from neopixel import *
 import sounddevice as sd #pip install sounddevice
 import numpy as np
@@ -7,11 +7,11 @@ import math
 import sys
 import threading 
 from threading import Lock
-import MQTT_Handler as mqtt
+import mqttUtil.MQTT_Handler as mqtt
 import pyaudio
 import wave
 import time
-import mqttconfig as config
+import mqttUtil.mqttconfig as config
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16

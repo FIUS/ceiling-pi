@@ -1,15 +1,7 @@
 import time
-from neo import *
-import printer
-import off
-import on
-import plainColor
-import binaryCounter
-import music
-import lsd
-import colorBomb
-import strobo
-import listener
+from leds.neo import *
+from leds.animation_import import *
+import leds.listener as listener
 import threading
 import traceback
 

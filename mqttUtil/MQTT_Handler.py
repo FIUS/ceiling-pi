@@ -1,6 +1,5 @@
 import paho.mqtt.client as mqtt
-from mqttconfig import MQTT_BROKER_ADDRESS, MQTT_USERNAME, MQTT_PASSWORD
-
+from mqttUtil.mqttconfig import MQTT_BROKER_ADDRESS, MQTT_USERNAME, MQTT_PASSWORD
 
 class MQTT_Handler:
     mqtt_client = None

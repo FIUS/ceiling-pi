@@ -1,5 +1,5 @@
 from neopixel import *
-import colorMagic as cm
+import leds.colorMagic as cm
 
 def init(strip, data):
     for i in range(strip.numPixels()):

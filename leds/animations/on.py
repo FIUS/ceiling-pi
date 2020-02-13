@@ -1,4 +1,4 @@
-import colorMagic as cm
+import leds.colorMagic as cm
 from neopixel import *
 from datetime import datetime
 

@@ -1,5 +1,5 @@
 from neopixel import *
-import colorMagic as cm
+import leds.colorMagic as cm
 printerTemp=0
 printerOn=True
 tempColor = [0 for i in range(883-852)]

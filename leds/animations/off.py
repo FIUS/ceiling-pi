@@ -1,5 +1,5 @@
 import random
-import colorMagic as cm
+import leds.colorMagic as cm
 from neopixel import *
 pixelsLeft=None
 speed=2
