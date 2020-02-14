@@ -8,3 +8,4 @@ import leds.animations.music as music
 import leds.animations.lsd as lsd
 import leds.animations.colorBomb as colorBomb
 import leds.animations.strobo as strobo
+import leds.animations.meteor as meteor

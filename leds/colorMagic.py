@@ -2,7 +2,8 @@ from neopixel import *
 
 def fadeAll(strip,strength):
     for i in range(0,strip.numPixels()):
-        color=strip.getPixelColor(i)
+        color=getRGBfromInt(strip.getPixelColor(i))
+        
         r=color[0]/strength
         g=color[1]/strength
         b=color[2]/strength
@@ -11,7 +12,7 @@ def fadeAll(strip,strength):
 def rgb(r,g,b):
     return Color(int(g),int(r),int(b))
 
-def getRGBfromI(RGBint):
+def getRGBfromInt(RGBint):
     blue =  RGBint & 255
     green = (RGBint >> 8) & 255
     red =   (RGBint >> 16) & 255

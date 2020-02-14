@@ -60,7 +60,9 @@ led_functions=[
     colorBomb.init,
     colorBomb.update,
     strobo.init,
-    strobo.update
+    strobo.update,
+    meteor.init,
+    meteor.update
 ]
 
 fps = 60
