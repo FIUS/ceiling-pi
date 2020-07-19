@@ -36,6 +36,7 @@ def loop():
                 if led_state['type'] % 2==0:
                     led_state['type']+=1
                 printer.magicOverride(strip, led_state)
+                printer_3d.magicOverride(strip,led_state)
                 strip.show()
             else:
                 time.sleep(0.01)

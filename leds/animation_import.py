@@ -1,5 +1,6 @@
 
 import leds.animations.printer as printer
+import leds.animations.printer_3d as printer_3d
 import leds.animations.off as off
 import leds.animations.on as on
 import leds.animations.plainColor as plainColor
