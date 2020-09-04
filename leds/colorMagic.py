@@ -10,6 +10,9 @@ def fadeArea(strip, strength, area, r=None, g=None, b=None):
     off = True
     for i in area:
         color = getRGBfromInt(strip.getPixelColor(i))
+        r=0
+        g=0
+        b=0
         if r is None:
             r = color[0]/strength
         else:
@@ -27,7 +30,16 @@ def fadeArea(strip, strength, area, r=None, g=None, b=None):
 
         if r > 5 or g > 5 or b > 5:
             off = False
+        
 
+        r-=1
+        g-=1
+        b-=1
+
+        r=max(0,r)
+        g=max(0,g)
+        b=max(0,b)
+        
         strip.setPixelColor(i, rgb(g, r, b))
     return off
 

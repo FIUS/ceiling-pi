@@ -6,7 +6,7 @@ import threading
 import traceback
 
 led_state = {
-    'type': 18,  # 18 is for cinema
+    'type': 0,  # 18 is for cinema
     'color': [0, 50, 0],
     'printer-color': 0,
     'printerStart': 400
