@@ -3,6 +3,15 @@ import leds.led_main as led
 import threading
 import json
 
+import PythonTelegramWraper.bot as BotWrapper
+from telegram import InlineKeyboardButton
+from telegram import InlineKeyboardMarkup
+from telegram import ReplyKeyboardMarkup
+from telegram import ReplyKeyboardRemove
+from telegram.ext.filters import Filters
+from telegram.ext import CallbackQueryHandler
+import PythonTelegramWraper.config as config
+
 app=Flask(__name__)
 
 threading.Thread(target=led.loop).start()
@@ -64,5 +73,57 @@ def animations():
             out.append(name)
     
     return str(out)
+
+def admin(update, context):
+    user = update.message.from_user
+    chatID = BotWrapper.chatID(update)
+    print(chatID)
+    BotWrapper.sendMessage(chatID, "Request has been sent...")
+    button_list = [
+        InlineKeyboardButton("Ja", callback_data=chatID),
+        InlineKeyboardButton("Nein", callback_data="no")
+    ]
+    reply_markup = InlineKeyboardMarkup(
+        BotWrapper.build_menu(button_list, n_cols=1))
+    message = '{} (@{}) wants to admin, accept request?'.format(
+        user['first_name'], user['username'])
+    BotWrapper.getBot().sendMessage(config.admin, message, reply_markup=reply_markup)
+
+def adminResponse(update, context):
+    chatID = BotWrapper.chatID(update)
+    try:
+        BotWrapper.getBot().delete_message(chat_id=update.effective_chat.id,
+                                message_id=update.effective_message.message_id)
+    except Exception as e:
+        print(e)
+    inp = str(update.callback_query.data)
+    if inp is not "no":
+        BotWrapper.modifyUser(int(inp), True)
+        BotWrapper.sendMessage(inp, "You have been accepted")
+        BotWrapper.sendMessage(chatID, "Request has been accepted")
+    else:
+        BotWrapper.sendMessage(chatID, "Request has been denied")
+
+def modeChange(update, context):
+    chatID = BotWrapper.chatID(update)
+
+    if str(chatID) in BotWrapper.getUserData():
+
+        msg = update.message.text.split()[0][1:]
+        
+        led.stringToMode(msg.lower())
+
+        BotWrapper.sendMessage(chatID, "Switched to "+str(msg))
+
+
+
+BotWrapper.botBackend.dispatcher.add_handler(
+    CallbackQueryHandler(adminResponse))
+BotWrapper.addBotCommand("admin", admin)
+
+for i in led.modeSwitchCase:
+    print(i)
+    BotWrapper.addBotCommand(i,modeChange)
+BotWrapper.startBot()
 
 app.run(host="0.0.0.0")

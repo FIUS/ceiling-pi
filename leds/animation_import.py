@@ -10,3 +10,5 @@ import leds.animations.lsd as lsd
 import leds.animations.colorBomb as colorBomb
 import leds.animations.strobo as strobo
 import leds.animations.meteor as meteor
+import leds.animations.cinema as cinema
+import leds.animations.cinemaOff as cinemaOff
