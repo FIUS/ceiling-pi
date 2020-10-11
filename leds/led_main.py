@@ -53,7 +53,7 @@ def stringToMode(mode):
     led_state['type']=modeSwitchCase[mode]
 
 
-modeSwitchCase={"off": 0, "on": 2, "plaincolor": 4, "binarycounter": 6, "music": 8, "lsd": 10,
+modeSwitchCase={"off": 0, "on": 2, "color": 4, "binarycounter": 6, "music": 8, "lsd": 10,
         "colorbomb": 12, "strobo": 14, "meteor": 16, "cinema": 18, "cinemaoff": 20}
 
 led_functions = [
