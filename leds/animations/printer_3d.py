@@ -1,6 +1,5 @@
 from neopixel import *
 import leds.colorMagic as cm
-
 import paho.mqtt.client as mqtt
 
 mqtt_username = "3D"
@@ -10,11 +9,13 @@ currentState = 0
 
 area = (404, 670)
 
-led_state=None
+led_state = None
+
 
 def init(data):
     global led_state
-    led_state=data
+    led_state = data
+
 
 def magicOverride(strip, data):
 
@@ -42,15 +43,18 @@ def progressCallback(client, userdata, message):
         currentState = float(message.payload.decode("utf-8"))/100
     elif message.topic == "i3mk3s/state/text" and message.payload.decode("utf-8") != "Printing":
         currentState = -1
-        led_state['type']=led_state['type']-1
+        led_state['type'] = led_state['type']-1
 
     print(currentState)
 
 
 client = mqtt.Client()
-client.username_pw_set(mqtt_username, mqtt_password)
-client.connect("192.168.212.223", 1883, 60)
-client.subscribe("i3mk3s/progress/completion")
-client.subscribe("i3mk3s/state/text")
-client.on_message = progressCallback
-client.loop_start()
+try:
+    client.username_pw_set(mqtt_username, mqtt_password)
+    client.connect("fius-octopi", 1883, 60)
+    client.subscribe("i3mk3s/progress/completion")
+    client.subscribe("i3mk3s/state/text")
+    client.on_message = progressCallback
+    client.loop_start()
+except:
+    print("3d printer not reachable")
