@@ -3,6 +3,7 @@ import leds.led_main as led
 import threading
 import json
 from os import environ
+import logging
 
 import PythonTelegramWraper.bot as BotWrapper
 from telegram import InlineKeyboardButton
@@ -28,6 +29,9 @@ MQTT_PORT: int = int(load_from_env("MQTT_PORT", "1883"))
 MQTT_USER: str = load_from_env("MQTT_USER")
 MQTT_PW: str = load_from_env("MQTT_PW")
 MQTT_TOPIC_DOOR_STATE: str = load_from_env("MQTT_TOPIC_DOOR_STATE")
+
+LOGLEVEL = load_from_env('LOGLEVEL', 'INFO').upper()
+logging.basicConfig(level=LOGLEVEL)
 
 led.run(MQTT_BROKER, MQTT_PORT, MQTT_USER, MQTT_PW, MQTT_TOPIC_DOOR_STATE)
 
