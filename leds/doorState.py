@@ -49,10 +49,10 @@ class DoorStateWatcher():
     def update(self, client, userdata, message):
         payload = message.payload
         logger.debug("Received door update: %s", payload)
-        if payload == "open" and not self.doorOpen:
+        if payload == b'open' and not self.doorOpen:
             self.doorOpen = True
             self.turnOn()
-        if payload == "closed" and self.doorOpen:
+        if payload == b'closed' and self.doorOpen:
             self.doorOpen = False
             self.turnOff()
 
