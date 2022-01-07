@@ -1,7 +1,7 @@
 import time
 from leds.neo import *
 from leds.animation_import import *
-import leds.listener as listener
+from leds.doorState import DoorStateWatcher
 import threading
 import traceback
 
@@ -19,7 +19,13 @@ led_functions = None
 
 led_state['num_pixel'] = strip.numPixels()
 
-threading.Thread(target=listener.routine).start()
+def run(mqtt_broker: str,
+        mqtt_port: int,
+        mqtt_user: str,
+        mqtt_pw: str,
+        mqtt_topic_door_state: str):
+    dsw = DoorStateWatcher(mqtt_broker, mqtt_port, mqtt_user, mqtt_pw, mqtt_topic_door_state, led_state)
+    threading.Thread(target=loop).start()
 
 
 def getMilis():

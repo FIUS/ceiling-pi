@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import leds.led_main as led
 import threading
 import json
+from os import environ
+import logging
 
 import PythonTelegramWraper.bot as BotWrapper
 from telegram import InlineKeyboardButton
@@ -14,28 +16,45 @@ import PythonTelegramWraper.config as config
 
 app=Flask(__name__)
 
-threading.Thread(target=led.loop).start()
+def die(*args: object):
+    raise SystemExit(*args)
+
+
+def load_from_env(name: str, default=None) -> str:
+    return environ.get(name) or default or die(f"Need the {name} in env")
+
+
+MQTT_BROKER: str = load_from_env("MQTT_BROKER")
+MQTT_PORT: int = int(load_from_env("MQTT_PORT", "1883"))
+MQTT_USER: str = load_from_env("MQTT_USER")
+MQTT_PW: str = load_from_env("MQTT_PW")
+MQTT_TOPIC_DOOR_STATE: str = load_from_env("MQTT_TOPIC_DOOR_STATE")
+
+LOGLEVEL = load_from_env('LOGLEVEL', 'INFO').upper()
+logging.basicConfig(level=LOGLEVEL)
+
+led.run(MQTT_BROKER, MQTT_PORT, MQTT_USER, MQTT_PW, MQTT_TOPIC_DOOR_STATE)
 
 @app.route("/color", methods=['POST'])
 def color():
     ''' Input as json in form of [r,g,b] with 0 <= r,g,b <= 255 '''
-    
+
     content=request.json
     if content is not None:
         led.led_state['color']=content
         led.led_state['type']=4
         return "Ok"
-    
+
     return "Wrong format"
 
-    
+
 
 @app.route("/animationType", methods=['POST'])
 def animationType():
     '''Input as json in form of {"type":5} '''
     content=request.json
     led.led_state['type']=content['type']*2
-    
+
     return "State ist now "+str(content['type'])
 
 @app.route("/get")
@@ -75,7 +94,7 @@ def animations():
         name=i.__module__
         if name not in out:
             out.append(name)
-    
+
     return str(out)
 
 def admin(update, context):
@@ -114,7 +133,7 @@ def modeChange(update, context):
     if str(chatID) in BotWrapper.getUserData():
 
         msg = update.message.text.split()[0][1:]
-        
+
         led.stringToMode(msg.lower())
 
         BotWrapper.sendMessage(chatID, "Switched to "+str(msg))
