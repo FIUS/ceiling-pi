@@ -57,7 +57,9 @@ class DoorStateWatcher():
             self.turnOff()
 
     def turnOn(self):
+        logger.debug("Turning on")
         self.led_state['type'] = 2
 
     def turnOff(self):
+        logger.debug("Turning off")
         self.led_state['type'] = 0
