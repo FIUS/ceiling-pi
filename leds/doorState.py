@@ -1,11 +1,11 @@
 from typing import Dict, Any
 import socket
-from logging import Logger
+from logging import getLogger
 from paho.mqtt import client as mqtt_client
 
 QOS = 1
 
-logger = Logger(__name__)
+logger = getLogger(__name__)
 
 class DoorStateWatcher():
     """
@@ -29,6 +29,8 @@ class DoorStateWatcher():
 
         self.doorOpen = False
 
+        logger.debug("Connecting to mqtt server as %s", self.CLIENT_ID)
+
         # Connect to mqtt
         def on_connect(client, userdata, flags, rc):
             if rc == 0:
@@ -40,11 +42,12 @@ class DoorStateWatcher():
         self.client.on_connect = on_connect
         self.client.on_message = self.update
         self.client.connect(self.MQTT_BROKER, self.MQTT_PORT, keepalive=10)
+        logger.debug("Subscribing to %s", self.MQTT_TOPIC)
         self.client.subscribe((self.MQTT_TOPIC, QOS))
         self.client.loop_start()
 
     def update(self, client, userdata, message):
-        logger.debug("Received door update:", message)
+        logger.debug("Received door update: %s", message)
         if message == "open" and not self.doorOpen:
             self.doorOpen = True
             self.turnOn()
