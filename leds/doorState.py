@@ -37,7 +37,7 @@ class DoorStateWatcher():
                 logger.info("Connected to MQTT Broker!")
             else:
                 logger.warn("Failed to connect to broker, return code %d\n", rc)
-        self.client = mqtt_client.Client(self.CLIENT_ID)
+        self.client = mqtt_client.Client(self.CLIENT_ID, clean_session=False)
         self.client.username_pw_set(self.MQTT_USER, self.MQTT_PW)
         self.client.on_connect = on_connect
         self.client.on_message = self.update
