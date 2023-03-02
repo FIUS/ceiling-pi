@@ -2,6 +2,7 @@ from typing import Dict, Any
 import socket
 from logging import getLogger
 from paho.mqtt import client as mqtt_client
+import json
 
 QOS = 1
 
@@ -48,11 +49,13 @@ class DoorStateWatcher():
 
     def update(self, client, userdata, message):
         payload = message.payload
-        logger.debug("Received door update: %s", payload)
-        if payload == b'open' and not self.doorOpen:
+        
+        logger.debug("Received door state update: %s", payload)
+        payload_obj = json.loads(payload)
+        if payload_obj["powerstate"] == 'on' and not self.doorOpen:
             self.doorOpen = True
             self.turnOn()
-        if payload == b'closed' and self.doorOpen:
+        if payload_obj["powerstate"] == 'off' and self.doorOpen:
             self.doorOpen = False
             self.turnOff()
 
