@@ -36,6 +36,8 @@ class DoorStateWatcher():
         def on_connect(client, userdata, flags, rc):
             if rc == 0:
                 logger.info("Connected to MQTT Broker!")
+                logger.debug("Subscribing to %s", self.MQTT_TOPIC)
+                self.client.subscribe((self.MQTT_TOPIC, QOS))
             else:
                 logger.warn("Failed to connect to broker, return code %d\n", rc)
         self.client = mqtt_client.Client(self.CLIENT_ID, clean_session=False)
@@ -43,8 +45,6 @@ class DoorStateWatcher():
         self.client.on_connect = on_connect
         self.client.on_message = self.update
         self.client.connect(self.MQTT_BROKER, self.MQTT_PORT, keepalive=10)
-        logger.debug("Subscribing to %s", self.MQTT_TOPIC)
-        self.client.subscribe((self.MQTT_TOPIC, QOS))
         self.client.loop_start()
 
     def update(self, client, userdata, message):
