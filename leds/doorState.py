@@ -18,13 +18,13 @@ class DoorStateWatcher():
                  mqtt_user: str,
                  mqtt_pw: str,
                  mqtt_topic: str,
-                 led_state: Dict[str, Any]) -> None:
+                 setLedType: Callable[[int], None]) -> None:
         self.MQTT_BROKER: str = mqtt_broker
         self.MQTT_PORT: int = mqtt_port
         self.MQTT_USER: str = mqtt_user
         self.MQTT_PW: str = mqtt_pw
         self.MQTT_TOPIC: str = mqtt_topic
-        self.led_state: Dict[str, Any] = led_state
+        self.setLedType: Callable[[int], None] = setLedType
 
         self.CLIENT_ID: str = f'ceiling-pi-{socket.gethostname()}-door-state-listener'
 
