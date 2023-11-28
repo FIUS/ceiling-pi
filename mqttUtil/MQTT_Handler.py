@@ -10,7 +10,7 @@ class MQTT_Handler:
         self.mqtt_client.on_message = MQTT_Handler.on_message
         self.mqtt_client.on_connect = MQTT_Handler.on_connect
         self.mqtt_client.username_pw_set(MQTT_USERNAME, password=MQTT_PASSWORD)
-        self.mqtt_client.connect(MQTT_BROKER_ADDRESS, keepalive=60)
+        self.mqtt_client.connect_async(MQTT_BROKER_ADDRESS, keepalive=60)
         self.mqtt_client.publish("fs/ledcontrol/status", "online")
         self.mqtt_client.loop_start()
 
