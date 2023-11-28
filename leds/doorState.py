@@ -44,7 +44,7 @@ class DoorStateWatcher():
         self.client.username_pw_set(self.MQTT_USER, self.MQTT_PW)
         self.client.on_connect = on_connect
         self.client.on_message = self.update
-        self.client.connect(self.MQTT_BROKER, self.MQTT_PORT, keepalive=10)
+        self.client.connect_async(self.MQTT_BROKER, self.MQTT_PORT, keepalive=10)
         self.client.loop_start()
 
     def update(self, client, userdata, message):
