@@ -43,7 +43,7 @@ def color():
     content=request.json
     if content is not None:
         led.led_state['color']=content
-        led.led_state['type']=4
+        led.setLedType(4)
         return "Ok"
 
     return "Wrong format"
@@ -54,7 +54,7 @@ def color():
 def animationType():
     '''Input as json in form of {"type":5} '''
     content=request.json
-    led.led_state['type']=content['type']*2
+    led.setLedType(content['type']*2)
 
     return "State ist now "+str(content['type'])
 

@@ -17,6 +17,7 @@ fps = None
 tick = None
 minDeltaTime = None
 led_functions = None
+mutex = threading.Lock()
 
 led_state['num_pixel'] = strip.numPixels()
 
@@ -41,13 +42,14 @@ def loop():
         try:
             delta = getMilis()-tick
             if delta > minDeltaTime:
-                led_functions[led_state['type']](strip, led_state)
-                if led_state['type'] % 2 == 0:
-                    led_state['type'] += 1
-                if led_state['type'] > 1:
-                    printer.magicOverride(strip, led_state)
-                    printer_3d.magicOverride(strip, led_state)
-                strip.show()
+                with mutex:
+                    led_functions[led_state['type']](strip, led_state)
+                    if led_state['type'] % 2 == 0:
+                        led_state['type'] += 1
+                    if led_state['type'] > 1:
+                        printer.magicOverride(strip, led_state)
+                        printer_3d.magicOverride(strip, led_state)
+                    strip.show()
             else:
                 time.sleep(0.01)
         except Exception as e:
@@ -55,9 +57,12 @@ def loop():
             print("Something went wrong !!!", e)
             exit()
 
+def setLedType(ledType):
+    with mutex:
+        led_state['type']=ledType
 
 def stringToMode(mode):
-    led_state['type']=modeSwitchCase[mode]
+    setLedType(modeSwitchCase[mode])
 
 
 modeSwitchCase={"off": 0, "on": 2, "color": 4, "binarycounter": 6, "music": 8, "lsd": 10,

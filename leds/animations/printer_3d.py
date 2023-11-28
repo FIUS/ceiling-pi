@@ -43,7 +43,8 @@ def progressCallback(client, userdata, message):
         currentState = float(message.payload.decode("utf-8"))/100
     elif message.topic == "i3mk3s/state/text" and message.payload.decode("utf-8") != "Printing":
         currentState = -1
-        led_state['type'] = led_state['type']-1
+        current_type = led_state['type']
+        setLedType(current_type-(current_type%2))
 
     print(currentState)
 
