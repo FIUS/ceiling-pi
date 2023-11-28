@@ -26,7 +26,7 @@ def run(mqtt_broker: str,
         mqtt_user: str,
         mqtt_pw: str,
         mqtt_topic_door_state: str):
-    dsw = DoorStateWatcher(mqtt_broker, mqtt_port, mqtt_user, mqtt_pw, mqtt_topic_door_state, led_state)
+    dsw = DoorStateWatcher(mqtt_broker, mqtt_port, mqtt_user, mqtt_pw, mqtt_topic_door_state, setLedType)
     threading.Thread(target=loop).start()
 
 
