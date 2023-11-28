@@ -13,6 +13,7 @@ from telegram import ReplyKeyboardRemove
 from telegram.ext.filters import Filters
 from telegram.ext import CallbackQueryHandler
 import PythonTelegramWraper.config as config
+import mqttUtil.mqttconfig as mqtt_config
 
 app=Flask(__name__)
 
@@ -24,10 +25,10 @@ def load_from_env(name: str, default=None) -> str:
     return environ.get(name) or default or die(f"Need the {name} in env")
 
 
-MQTT_BROKER: str = load_from_env("MQTT_BROKER")
+MQTT_BROKER: str = load_from_env("MQTT_BROKER",mqtt_config.MQTT_BROKER_ADDRESS)
 MQTT_PORT: int = int(load_from_env("MQTT_PORT", "1883"))
-MQTT_USER: str = load_from_env("MQTT_USER")
-MQTT_PW: str = load_from_env("MQTT_PW")
+MQTT_USER: str = load_from_env("MQTT_USER",mqtt_config.MQTT_USERNAME)
+MQTT_PW: str = load_from_env("MQTT_PW",mqtt_config.MQTT_PASSWORD)
 MQTT_TOPIC_DOOR_STATE: str = load_from_env("MQTT_TOPIC_DOOR_STATE")
 
 LOGLEVEL = load_from_env('LOGLEVEL', 'INFO').upper()
